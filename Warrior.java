@@ -9,27 +9,24 @@ package FinalProject;
  */
 public class Warrior extends Player 
 {
-    // instance variables - replace the example below with your own
-    private int x;
+   private String ability1, ability2, ability3;
+   private int ability1Cost, ability2Cost, ability3Cost;
+   public Warrior()
+   {
+       super("Warrior",100,-100);
+   }
+   public int useAbility1() 
+   {
+       
+   }
 
-    /**
-     * Constructor for objects of class Warrior
-     */
-    public Warrior()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+   public int useAbility2() 
+   {
+       
+   }
+   
+   public int useAbility3() 
+   {
+       
+   }
 }

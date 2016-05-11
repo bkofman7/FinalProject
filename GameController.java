@@ -13,7 +13,8 @@ public class GameController
         JFrame frame = new JFrame("TypeWarrior");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(new myPanel());
-        frame.pack();
+        frame.setSize(575,400);
         frame.setVisible(true);
+        
     }
 }

@@ -9,27 +9,56 @@ package FinalProject;
  */
 public class Player
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Player
-     */
-    public Player()
-    {
-        // initialise instance variables
-        x = 0;
+    private final int maxHealth;
+    private int health;
+    private int mana;
+    private int name;
+    private boolean isDead;
+    
+    public Player(String name, int healthChange, int manaChange) {
+        health = 500 + healthChange;
+        mana = 500 + manaChange;
+        this.name = name;
+        isDead = false;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    
+    public int takeHit(int dmg)
     {
-        // put your code here
-        return x + y;
+        health = health - dmg;
+        if (health <= 0)
+            isDead = true;
+        return health;
+    }
+    
+    abstract public int useAbility1(); 
+    
+    abstract public int useAbility2(); 
+    
+    abstract public int useAbility3(); 
+    
+    
+    public int heal(int amt)
+    {
+        if ((health + amt) > maxHealth)
+            health = maxHealth;
+        else {
+            health = health + amt;
+        }
+        return health;
+    }
+    
+    public int getHealth() 
+    {
+        return health;
+    }
+    
+    public int getMana() 
+    {
+        return mana;
+    }
+    
+    public boolean isDead() 
+    {
+        return isDead;
     }
 }
