@@ -13,9 +13,9 @@ public class Archer extends Player
    private int ability1Cost, ability2Cost, ability3Cost;
    public Archer()
    {
-       super("Archer",0,0);
+       super("Archer",0,0,"archer");
    }
-   public int useAbility1() 
+   /*public int useAbility1() 
    {
        
    }
@@ -28,5 +28,5 @@ public class Archer extends Player
    public int useAbility3() 
    {
        
-   }
+   }*/
 }

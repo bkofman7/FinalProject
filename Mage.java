@@ -13,9 +13,9 @@ public class Mage extends Player
    private int ability1Cost, ability2Cost, ability3Cost; 
    public Mage()
    {
-       super("Mage",-100,100);
+       super("Mage",-100,100,"mage");
    }
-   public int useAbility1() 
+   /*public int useAbility1() 
    {
        
    }
@@ -28,5 +28,5 @@ public class Mage extends Player
    public int useAbility3() 
    {
        
-   }
+   }*/
 }
