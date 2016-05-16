@@ -15,18 +15,28 @@ public class Warrior extends Player
    {
        super("Warrior",100,-100,"warrior");
    }
-   /*public int useAbility1() 
+   public int useAbility1() 
    {
-       
+       if (getMana()<50) 
+           return 0;
+       else {
+           setMana(getMana()-50);
+           return 100;
+       }
    }
 
    public int useAbility2() 
    {
-       
+       if (getMana()<10) 
+           return 0;
+       else {
+           setMana(getMana()-10);
+           return 50;
+       }
    }
-   
+       
    public int useAbility3() 
    {
-       
-   }*/
+       return 10;
+   }
 }

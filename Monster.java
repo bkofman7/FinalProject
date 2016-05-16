@@ -1,6 +1,6 @@
 package FinalProject;
-
-
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  * Write a description of class Monster here.
  * 
@@ -9,8 +9,35 @@ package FinalProject;
  */
 public class Monster
 {
-    private 
+    private boolean isStunned;
+    private boolean isDead;
     private int health;
     private String name;
-    public Monster ()
+    public Monster (int health, String name, boolean isStunned, boolean isAgitated) {
+        this.health = health;
+        this.name = name;
+    }
+    abstract public int attack();
+    
+    public boolean isStunned() {
+        return isStunned;
+    }
+    public void getAgitated() {
+        Timer damageSelf = new Timer();
+        damageSelf.scheduleAtFixedRate(new RemindTask(), 0, 10000);
+    }
+    public int takeHit(int dmg) {
+        health = health - dmg;
+        if (health <= 0)
+            isDead = true;
+        return health;
+    }
+    public void hurtSelf() {
+        takeHit(10);
+    }
+    class RemindTask extends TimerTask {
+        public void run() {
+            hurtSelf();
+        }
+    }
 }

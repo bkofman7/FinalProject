@@ -15,18 +15,28 @@ public class Mage extends Player
    {
        super("Mage",-100,100,"mage");
    }
-   /*public int useAbility1() 
+   public int useAbility1() 
    {
-       
+       if (getMana()<50) 
+           return 0;
+       else {
+           setMana(getMana()-50);
+           return -1;
+       }
    }
 
    public int useAbility2() 
    {
-       
+       if (getMana()<50) 
+           return 0;
+       else {
+           setMana(getMana()-50);
+           return -2;
+       }
    }
-   
+       
    public int useAbility3() 
    {
-       
-   }*/
+       return 15;
+   }
 }

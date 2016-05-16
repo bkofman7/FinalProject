@@ -15,18 +15,28 @@ public class Archer extends Player
    {
        super("Archer",0,0,"archer");
    }
-   /*public int useAbility1() 
+   public int useAbility1() 
    {
-       
+       if (getMana()<50) 
+           return 0;
+       else {
+           setMana(getMana()-50);
+           return 50;
+       }
    }
 
    public int useAbility2() 
    {
-       
+       return 5;
    }
-   
+       
    public int useAbility3() 
    {
-       
-   }*/
+       if (getMana()<100) 
+           return 0;
+       else {
+           setMana(getMana()-100);
+           return 200;
+       }
+   }
 }

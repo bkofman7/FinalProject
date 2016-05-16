@@ -35,13 +35,13 @@ public class Player
             isDead = true;
         return health;
     }
-   /* 
+    
     abstract public int useAbility1(); 
     
     abstract public int useAbility2(); 
     
     abstract public int useAbility3(); 
-    */
+    
     
     public int heal(int amt)
     {
@@ -66,5 +66,8 @@ public class Player
     public boolean isDead() 
     {
         return isDead;
+    }
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 }
