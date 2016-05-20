@@ -33,6 +33,7 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
         inputField = new javax.swing.JTextField();
         lastInputLabel = new javax.swing.JLabel();
         lastCommandText = new javax.swing.JLabel();
+        console = new javax.swing.JLabel();
 
         inputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +47,8 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
         lastCommandText.setText("Last Command:");
         lastCommandText.setAutoscrolls(true);
 
+        console.setText("Jlabel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,11 +59,13 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
                 .addComponent(lastCommandText, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lastInputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(console, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(329, Short.MAX_VALUE)
+                .addComponent(console)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lastInputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastCommandText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -75,11 +80,19 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
 public void actionPerformed(ActionEvent ae) {
     lastInputLabel.setText(inputField.getText().toUpperCase());
     inputField.setText("");
+    GameFlow.setCommand(lastInputLabel.getText());
+    
+}
+public void setConsoleText(String text) {
+    console.setText(text);
+    repaint();
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel console;
     private javax.swing.JTextField inputField;
     private javax.swing.JLabel lastCommandText;
     private javax.swing.JLabel lastInputLabel;
     // End of variables declaration//GEN-END:variables
+
 }

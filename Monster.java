@@ -13,9 +13,11 @@ public class Monster
     private boolean isDead;
     private int health;
     private String name;
-    public Monster (int health, String name, boolean isStunned, boolean isAgitated) {
+    public Monster (int health, String name, boolean x, boolean y) {
         this.health = health;
         this.name = name;
+        isStunned = x;
+        isDead = y;
     }
     abstract public int attack();
     
@@ -39,5 +41,8 @@ public class Monster
         public void run() {
             hurtSelf();
         }
+    }
+    public boolean isDead() {
+        return isDead;
     }
 }

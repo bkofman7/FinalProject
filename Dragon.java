@@ -1,6 +1,4 @@
 package FinalProject;
-
-
 /**
  * Write a description of class Dragon here.
  * 
@@ -9,27 +7,10 @@ package FinalProject;
  */
 public class Dragon extends Monster
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Dragon
-     */
-    public Dragon()
-    {
-        // initialise instance variables
-        x = 0;
+    public Dragon() {
+        super(2000,"Dragon",false,false);
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public int attack() {
+        return 100;
     }
 }
