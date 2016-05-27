@@ -11,6 +11,6 @@ public class Dragon extends Monster
         super(2000,"Dragon",false,false);
     }
     public int attack() {
-        return 100;
+        return 20;
     }
 }

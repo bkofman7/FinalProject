@@ -12,13 +12,48 @@ import java.awt.event.*;
  */
 public class myPanel extends javax.swing.JPanel implements ActionListener
 {
+    private int choice;
 
-    /**
-     * Creates new form myPanel
-     */
+    /*
+    Creates new form myPanel
+    */
     public myPanel() {
+        choice = 0;
         initComponents();
-        inputField.addActionListener(this);
+        inputField.addActionListener(new ActionListener() {
+            @Override
+        public void actionPerformed(ActionEvent ae) {
+        lastInputLabel.setText(inputField.getText().toUpperCase());
+        inputField.setText("");
+                }
+            }
+        );
+        add(inputField);
+        archerButton.addActionListener(new ActionListener() {
+            @Override
+        public void actionPerformed(ActionEvent ae) {
+                    choice = 2;                   
+                }
+            }
+        );
+        archerButton.setVisible(false);
+        warriorButton.addActionListener(new ActionListener() {
+            @Override
+        public void actionPerformed(ActionEvent ae) {
+                    choice = 1;
+                }
+            }
+        );
+        warriorButton.setVisible(false);
+        mageButton.addActionListener(new ActionListener() {
+            @Override
+        public void actionPerformed(ActionEvent ae) {
+                    choice = 3;
+                }
+            }
+        );
+        mageButton.setVisible(false);
+        
     }
 
     /**
@@ -34,12 +69,12 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
         lastInputLabel = new javax.swing.JLabel();
         lastCommandText = new javax.swing.JLabel();
         console = new javax.swing.JLabel();
-
-        inputField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputFieldActionPerformed(evt);
-            }
-        });
+        warriorButton = new javax.swing.JButton();
+        archerButton = new javax.swing.JButton();
+        mageButton = new javax.swing.JButton();
+        ability1 = new javax.swing.JLabel();
+        ability2 = new javax.swing.JLabel();
+        ability3 = new javax.swing.JLabel();
 
         lastInputLabel.setFont(new java.awt.Font("Verdana", 2, 18)); // NOI18N
 
@@ -47,7 +82,43 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
         lastCommandText.setText("Last Command:");
         lastCommandText.setAutoscrolls(true);
 
+        console.setFont(new java.awt.Font("Segoe Print", 0, 36)); // NOI18N
+        console.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         console.setText("Jlabel");
+
+        warriorButton.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        warriorButton.setText("Warrior");
+        warriorButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                warriorButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                warriorButtonMouseExited(evt);
+            }
+        });
+
+        archerButton.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        archerButton.setText("Archer");
+        archerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                archerButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                archerButtonMouseExited(evt);
+            }
+        });
+
+        mageButton.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        mageButton.setText("Mage");
+        mageButton.setToolTipText("");
+        mageButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mageButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mageButtonMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,12 +131,41 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lastInputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(console, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ability1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(warriorButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(archerButton)
+                                .addGap(90, 90, 90)
+                                .addComponent(mageButton)))
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ability2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(ability3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(console)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(warriorButton)
+                    .addComponent(archerButton)
+                    .addComponent(mageButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addComponent(ability1)
+                .addGap(28, 28, 28)
+                .addComponent(ability2)
+                .addGap(26, 26, 26)
+                .addComponent(ability3)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lastInputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastCommandText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -74,25 +174,84 @@ public class myPanel extends javax.swing.JPanel implements ActionListener
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputFieldActionPerformed
-public void actionPerformed(ActionEvent ae) {
-    lastInputLabel.setText(inputField.getText().toUpperCase());
-    inputField.setText("");
-    GameFlow.setCommand(lastInputLabel.getText());
-    
+    private void archerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archerButtonMouseEntered
+        ability1.setText("\"flaming arrow\": Deals 50 damage. 3 second cooldown. Costs 50 mana.");
+        ability2.setText("\"shot\": Deal 5 damage. No cooldown or mana cost.");
+        ability3.setText("\"super duper epic golden arrow\": Deals 200 damage. 20 second cooldown. Costs 100 mana.");
+    }//GEN-LAST:event_archerButtonMouseEntered
+
+    private void warriorButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_warriorButtonMouseEntered
+        ability1.setText("\"smite\": Deals 100 damage. 5 second cooldown. Costs 10 mana.");
+        ability2.setText("\"heavy strike\": Deals 50 damage. 3 second cooldown. Costs 10 mana.");
+        ability3.setText("\"light strike\": Deals 10 damage. No cooldown or mana cost.");
+    }//GEN-LAST:event_warriorButtonMouseEntered
+
+    private void mageButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mageButtonMouseEntered
+        ability1.setText("\"stun\": Stuns enemy for 5 seconds. 10 second cooldown. Costs 50 mana.");
+        ability2.setText("\"agitate\": Enemy damages itself for 10 seconds. 5 second cooldown. Costs 50 mana.");
+        ability3.setText("\"fireball\": Deals 15 damage. 1 second cooldown. No mana cost.");
+    }//GEN-LAST:event_mageButtonMouseEntered
+
+    private void warriorButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_warriorButtonMouseExited
+        ability1.setText("");
+        ability2.setText("");
+        ability3.setText("");
+    }//GEN-LAST:event_warriorButtonMouseExited
+
+    private void archerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archerButtonMouseExited
+        ability1.setText("");
+        ability2.setText("");
+        ability3.setText("");
+    }//GEN-LAST:event_archerButtonMouseExited
+
+    private void mageButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mageButtonMouseExited
+        ability1.setText("");
+        ability2.setText("");
+        ability3.setText("");
+    }//GEN-LAST:event_mageButtonMouseExited
+
+public String getLastCommand() {
+    return lastInputLabel.getText();
 }
 public void setConsoleText(String text) {
     console.setText(text);
     repaint();
 }
+public void makeButtonsVisible() {
+    archerButton.setVisible(true);
+    warriorButton.setVisible(true);
+    mageButton.setVisible(true);
+}
+public void makeButtonsInvisible() {
+    archerButton.setVisible(false);
+    warriorButton.setVisible(false);
+    mageButton.setVisible(false);
+}
+
+
+public int returnChoice() {
+    return choice;
+}
+
+public void setT(int choice) {
+    inputField.setText(" ");
+}
+
+public void actionPerformed(ActionEvent ae) {
+    
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ability1;
+    private javax.swing.JLabel ability2;
+    private javax.swing.JLabel ability3;
+    private javax.swing.JButton archerButton;
     private javax.swing.JLabel console;
     private javax.swing.JTextField inputField;
     private javax.swing.JLabel lastCommandText;
     private javax.swing.JLabel lastInputLabel;
+    private javax.swing.JButton mageButton;
+    private javax.swing.JButton warriorButton;
     // End of variables declaration//GEN-END:variables
 
 }

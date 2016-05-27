@@ -17,26 +17,39 @@ public class Archer extends Player
    }
    public int useAbility1() 
    {
-       if (getMana()<50) 
-           return 0;
-       else {
+       if (getMana()>=50 && getCD(1)==false) {
            setMana(getMana()-50);
-           return 50;
-       }
+           putAbilityOnCD(3,1);
+           return 50;}
+       else 
+       {return 0;} 
    }
 
-   public int useAbility2() 
-   {
-       return 5;
-   }
-       
    public int useAbility3() 
    {
-       if (getMana()<100) 
-           return 0;
-       else {
+       if (getMana()>=100 && getCD(3)==false) {
            setMana(getMana()-100);
-           return 200;
-       }
+           putAbilityOnCD(20,3);
+           return 200;}
+       else 
+       {return 0;}     
    }
+       
+   public int useAbility2() 
+   {
+       if (getCD(3)==false) {
+       putAbilityOnCD(0,2);
+       return 5;
+       }
+       else
+       {return 0;}
+   }
+   
+   public void putAbilityOnCD (int cd, int ability) {
+        setCD(ability,true);
+        try {Thread.sleep(cd*1000);
+        } catch(InterruptedException ex) {
+        Thread.currentThread().interrupt();}
+        setCD(ability,false);
+    }
 }

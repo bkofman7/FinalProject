@@ -19,7 +19,13 @@ public class Monster
         isStunned = x;
         isDead = y;
     }
-    abstract public int attack();
+    public int attack() {
+        return 0;
+    }
+    
+    public int getHealth() {
+        return health;
+    }
     
     public boolean isStunned() {
         return isStunned;
@@ -28,11 +34,10 @@ public class Monster
         Timer damageSelf = new Timer();
         damageSelf.scheduleAtFixedRate(new RemindTask(), 0, 10000);
     }
-    public int takeHit(int dmg) {
+    public void takeHit(int dmg) {
         health = health - dmg;
         if (health <= 0)
             isDead = true;
-        return health;
     }
     public void hurtSelf() {
         takeHit(10);
